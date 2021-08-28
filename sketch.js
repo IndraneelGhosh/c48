@@ -20,6 +20,8 @@ bgImg=loadImage("images/bg.jpg");
   angel=loadAnimation("images/a2.png","images/a3.png","images/flying_angel.png");
 arrow=loadImage("images/arrow.png");
 a1=loadImage("images/a1.png");
+winSound=loadSound("assets/win.mp3")
+loseSound=loadSound("assets/lose.mp3")
 
 }
 
@@ -98,6 +100,7 @@ if(peopleGroup1.isTouching(arrowGroup))
   { if(peopleGroup1[i].isTouching(arrowGroup))
     {peopleGroup1[i].velocityX=6
       arrower.addImage("arrows",a1);
+      winSound.play();
        arrowGroup.destroyEach()
       
        score = score+2 } } } 
@@ -106,7 +109,9 @@ if(peopleGroup1.isTouching(arrowGroup))
           for(var i=0;i<peopleGroup1.length;i++)
           { if(peopleGroup1[i].isTouching(angels))
             { peopleGroup1[i].destroy();
-               life=life-1 } } }
+               life=life-1 
+              loseSound.play();
+              } } }
 
 
 //angel goes back to original standing image once we stop pressing the space bar
